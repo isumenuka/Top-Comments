@@ -1,9 +1,9 @@
 /**
- * Extracts the video ID from a YouTube URL
+ * Extracts the video ID from a YouTube URL (including Shorts)
  */
 export const extractVideoId = (url: string): string | null => {
-  // Handle different URL formats
-  const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/;
+  // Handle different URL formats including Shorts
+  const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=|shorts\/)([^#&?]*).*/;
   const match = url.match(regExp);
   
   return match && match[2].length === 11 ? match[2] : null;

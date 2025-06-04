@@ -19,8 +19,8 @@ const VideoForm: React.FC<VideoFormProps> = ({ onSubmit, isLoading, isDark }) =>
       return;
     }
     
-    if (!url.includes('youtube.com/watch') && !url.includes('youtu.be/')) {
-      setError('Please enter a valid YouTube video URL');
+    if (!url.includes('youtube.com/watch') && !url.includes('youtu.be/') && !url.includes('youtube.com/shorts')) {
+      setError('Please enter a valid YouTube video or Shorts URL');
       return;
     }
     
@@ -43,7 +43,7 @@ const VideoForm: React.FC<VideoFormProps> = ({ onSubmit, isLoading, isDark }) =>
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="Paste YouTube video URL here"
+            placeholder="Paste YouTube video or Shorts URL here"
             className={`w-full p-4 pr-12 border-2 rounded-lg focus:outline-none transition-colors ${
               isDark 
                 ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-red-500' 
