@@ -2,6 +2,8 @@ import React from 'react';
 import { MessageSquare } from 'lucide-react';
 import { YouTubeComment } from '../types';
 import CommentCard from './CommentCard';
+import DownloadComments from './DownloadComments';
+import DownloadAllImages from './DownloadAllImages';
 
 interface CommentsListProps {
   comments: YouTubeComment[];
@@ -43,9 +45,15 @@ const CommentsList: React.FC<CommentsListProps> = ({ comments, error, videoUrl, 
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h3 className={`text-xl font-semibold ${isDark ? 'text-gray-200' : 'text-gray-800'} mb-4`}>
-        Top {comments.length} Comments
-      </h3>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className={`text-xl font-semibold ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
+          Top {comments.length} Comments
+        </h3>
+        <div className="flex gap-2">
+          <DownloadComments comments={comments} isDark={isDark} />
+          <DownloadAllImages comments={comments} isDark={isDark} />
+        </div>
+      </div>
       
       <div className="space-y-4">
         {comments.map((comment, index) => (
