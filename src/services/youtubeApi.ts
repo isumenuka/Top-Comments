@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FetchCommentsResponse, YouTubeComment } from '../types';
 import { extractVideoId } from '../utils/helpers';
 
-const API_KEY = 'AIzaSyBYsXPfi6QKnOZ2OdiDSl9kP4NNaJCNjzw';
+const API_KEY = 'AIzaSyBnILGarT7atfPVu1LrqNnf4fYBGBBSu-c';
 const MAX_COMMENTS = 20;
 
 /**
