@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FetchCommentsResponse, YouTubeComment } from '../types';
 import { extractVideoId } from '../utils/helpers';
 
-const API_KEY = 'AIzaSyBnILGarT7atfPVu1LrqNnf4fYBGBBSu-c';
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const MAX_COMMENTS = 20;
 
 /**
@@ -10,6 +10,13 @@ const MAX_COMMENTS = 20;
  */
 export const fetchTopComments = async (url: string): Promise<FetchCommentsResponse> => {
   try {
+    if (!API_KEY) {
+      return { 
+        comments: [],
+        error: 'YouTube API key is not configured. Please check your environment variables.' 
+      };
+    }
+    
     const videoId = extractVideoId(url);
     
     if (!videoId) {
